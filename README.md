@@ -34,42 +34,6 @@ python + django + mysql + redis + celery + FastDFS(分布式图片服务器) + n
         - [x] 查询支付结果
         - [x] 评论
 
-
-
-- uwsgi web服务器启动：  
-    - **注意: uwsgi开启需要修改[配置文件](wangqinxiu/settings.py)中的DEBUG和ALLOWED_HOSTS**
-        ```    
-        启动: uwsgi --ini 配置文件路径 / uwsgi --ini uwsgi.ini
-        停止: uwsgi --stop uwsgi.pid路径 / uwsgi --stop uwsgi.pid
-        ```
-- celery分布式任务队列启动  
-        ```
-        celery -A celery_tasks.tasks worker -l info
-        ```
-- redis服务端启动  
-        ```
-        sudo redis-server /etc/redis/redis.conf
-        ```
-
-- nginx
-    ```
-    启动nginx
-    sudo /usr/local/nginx/sbin/nginx
-    重启nginx
-    sudo /usr/local/nginx/sbin/nginx -s reload
-    ```
-- 建立索引文件--搜索引擎  
-  新环境需要配置jieba分词,生成[whoose_cn_backend]()文件
-    ```
-    python manage.py rebuild_index
-    ```
-- mysql事务隔离级别设置
-    ```
-    sudo vim /etc/mysql/mysql.conf.d/mysql.cnf
-    transaction-isolation = READ-COMMITTED (读已提交)
-    ```
-
-
 ## 创建管理员用户
 python manage.py createsuperuser
 
@@ -96,3 +60,7 @@ python manage.py createsuperuser
     
     后端管理
     http://127.0.0.1:8001/admin/
+    
+## 建立索引
+    
+    python manage.py rebuild_index
